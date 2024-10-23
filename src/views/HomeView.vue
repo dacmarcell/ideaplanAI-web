@@ -3,5 +3,15 @@ import MarkdownRenderer from '../components/MarkdownRenderer.vue'
 </script>
 
 <template>
-  <MarkdownRenderer />
+  <div class="container">
+    <MarkdownRenderer />
+  </div>
 </template>
+
+<style scoped>
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
