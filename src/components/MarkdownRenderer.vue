@@ -38,8 +38,14 @@ export default {
       this.error = null
       this.markdown = ''
 
+      if (!process.env.VUE_APP_API_URL) {
+        this.error = 'API URL is missing or invalid.'
+        this.loading = false
+        return
+      }
+
       axios
-        .post('http://localhost:3000/', { project: this.projeto })
+        .post(process.env.VUE_APP_API_URL, { project: this.projeto })
         .then(response => {
           this.markdown = response.data
           this.renderedMarkdown = this.md.render(this.markdown)
