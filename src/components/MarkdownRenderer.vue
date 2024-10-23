@@ -27,8 +27,8 @@ export default {
       projeto: '',
       loading: false,
       error: null,
-      markdown: null,
-      renderedMarkdown: null,
+      markdown: '',
+      renderedMarkdown: '',
       md: new MarkdownIt(),
     }
   },
@@ -36,7 +36,7 @@ export default {
     onSubmit() {
       this.loading = true
       this.error = null
-      this.markdown = null
+      this.markdown = ''
 
       axios
         .post('http://localhost:3000/', { project: this.projeto })
