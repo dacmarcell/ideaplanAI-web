@@ -3,7 +3,7 @@
     <form @submit.prevent="onSubmit">
       <input
         type="text"
-        v-model="projeto"
+        v-model="text"
         placeholder="Descreva o projeto..."
         class="form-input"
       />
@@ -24,9 +24,9 @@ import MarkdownIt from 'markdown-it'
 export default {
   data() {
     return {
-      projeto: '',
+      text: '',
       loading: false,
-      error: null,
+      error: '',
       markdown: '',
       renderedMarkdown: '',
       md: new MarkdownIt(),
@@ -35,7 +35,7 @@ export default {
   methods: {
     onSubmit() {
       this.loading = true
-      this.error = null
+      this.error = ''
       this.markdown = ''
 
       if (!process.env.VUE_APP_API_URL) {
@@ -45,7 +45,7 @@ export default {
       }
 
       axios
-        .post(process.env.VUE_APP_API_URL, { project: this.projeto })
+        .post(process.env.VUE_APP_API_URL, { text: this.text })
         .then(response => {
           this.markdown = response.data
           this.renderedMarkdown = this.md.render(this.markdown)
