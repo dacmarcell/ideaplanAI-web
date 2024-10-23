@@ -1,11 +1,12 @@
 import { describe, it, expect } from 'vitest'
 
 import { mount } from '@vue/test-utils'
-import HelloWorld from '../HelloWorld.vue'
+import MarkdownRenderer from '../MarkdownRenderer.vue'
 
-describe('HelloWorld', () => {
+describe('MarkdownRenderer', () => {
   it('renders properly', () => {
-    const wrapper = mount(HelloWorld, { props: { msg: 'Hello Vitest' } })
-    expect(wrapper.text()).toContain('Hello Vitest')
+    const wrapper = mount(MarkdownRenderer)
+    expect(wrapper.element()).toContain('input')
+    expect(wrapper.element()).toContain('button')
   })
 })
