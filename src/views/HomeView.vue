@@ -7,11 +7,3 @@ import MarkdownRenderer from '../components/MarkdownRenderer.vue'
     <MarkdownRenderer />
   </div>
 </template>
-
-<style scoped>
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-</style>
