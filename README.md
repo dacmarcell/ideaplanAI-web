@@ -1,6 +1,7 @@
-# ideaplan-ai
+# IdeaPlanAI - Web
 
-This template should help get you started developing with Vue 3 in Vite.
+Um analisador de projetos que utiliza IA para calcular os requisitos funcionais, não funcionais, estimativa de tempo, tecnologias recomendadas e desafios em potencial a partir do projeto proposto.
+
 
 ## Variáveis de ambiente:
 
