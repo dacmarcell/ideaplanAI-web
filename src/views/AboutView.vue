@@ -12,6 +12,7 @@
   word-break: break-all;
 }
 .container {
+  margin: 5%;
   display: flex;
   flex-direction: row;
   align-items: center;
