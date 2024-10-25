@@ -3,7 +3,7 @@ import MarkdownRenderer from '../components/MarkdownRenderer.vue'
 </script>
 
 <template>
-  <div class="text-container">
+  <div class="container">
     <h3 class="text">
       Bem-vindo ao IdeaPlanAI, um estimador de tempo para a criação de software.
       Você insere sua ideia e ele fornece diversas informações úteis para você.
@@ -20,15 +20,20 @@ import MarkdownRenderer from '../components/MarkdownRenderer.vue'
       seu próximo software com eficiência!
     </p>
   </div>
-  <MarkdownRenderer />
+  <div class="md-container">
+    <MarkdownRenderer />
+  </div>
 </template>
 
 <style scoped>
-.text-container {
+.container {
   margin: 5%;
 }
 .text {
   font-size: 20px;
   margin: 20px;
+}
+.md-container {
+  margin: 5%;
 }
 </style>
