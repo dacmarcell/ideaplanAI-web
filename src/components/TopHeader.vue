@@ -2,6 +2,7 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons'
 import { useRoute } from 'vue-router'
+import IdeaPlanAiLogo from './IdeaPlanAiLogo.vue'
 
 const currentRoute = useRoute()
 const linkedinURL = 'https://www.linkedin.com/in/marcell-dactes/'
@@ -12,11 +13,11 @@ const routes = [
 ]
 
 const getBtnClass = (btnPath: string) =>
-  currentRoute.path === btnPath ? 'green' : 'inactive-btn'
+  currentRoute.path === btnPath ? 'active-btn' : 'inactive-btn'
 </script>
 
 <template>
-  <h1>Idea<span class="green">P</span>lan<span class="green">AI</span></h1>
+  <IdeaPlanAiLogo />
   <nav>
     <router-link
       v-for="route in routes"
@@ -35,7 +36,7 @@ const getBtnClass = (btnPath: string) =>
 </template>
 
 <style scoped>
-.green {
+.active-btn {
   color: var(--background-secoundary-color);
 }
 .inactive-btn {
