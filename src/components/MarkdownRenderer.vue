@@ -1,20 +1,25 @@
+<script setup lang="ts">
+import LoadingData from './LoadingData.vue'
+</script>
+
 <template>
-  <div>
-    <form @submit.prevent="onSubmit">
-      <input
-        type="text"
-        v-model="text"
-        placeholder="Descreva o projeto..."
-        class="form-input"
-      />
-      <button type="submit" class="form-button">Enviar</button>
-      <div v-if="loading" class="loading">Carregando...</div>
-      <div v-else-if="error" class="error" v-html="error"></div>
-      <div v-else-if="markdown" class="markdown-content">
-        <div v-html="renderedMarkdown"></div>
-      </div>
-    </form>
-  </div>
+  <form @submit.prevent="onSubmit">
+    <input
+      type="text"
+      v-model="text"
+      placeholder="Descreva o projeto..."
+      class="form-input"
+    />
+    <button type="submit" class="form-button">Enviar</button>
+    <div v-if="loading" class="loading">
+      <p>Carregando...</p>
+      <p><LoadingData /></p>
+    </div>
+    <div v-else-if="error" class="error" v-html="error"></div>
+    <div v-else-if="markdown" class="markdown-content">
+      <div v-html="renderedMarkdown"></div>
+    </div>
+  </form>
 </template>
 
 <style scoped>
@@ -26,9 +31,11 @@
   margin-bottom: 10px;
   font-size: 20px;
   font-family: var(--font-primary);
+  resize: none;
+  overflow: hidden;
+  transition: border 0.3s;
 }
 .form-input:focus {
-  outline: none;
   border: 1px solid var(--background-secoundary-color);
 }
 
