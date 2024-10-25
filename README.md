@@ -1,4 +1,4 @@
-# IdeaPlanAI - Web
+# IdeaPlanAI - Web - Transforme suas ideias em projetos com IA
 
 Um analisador de projetos que utiliza IA para calcular os requisitos funcionais, não funcionais, estimativa de tempo, tecnologias recomendadas e desafios em potencial a partir do projeto proposto.
 
