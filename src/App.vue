@@ -18,7 +18,7 @@ import TopHeader from './components/TopHeader.vue'
   color: var(--text-primary-color);
 }
 body {
-  font-family: 'Bebas Neue', sans-serif;
+  font-family: var(--font-primary);
   margin: 0;
   padding: 0;
   background-color: var(--background-primary-color);
