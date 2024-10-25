@@ -13,7 +13,7 @@ import LoadingData from './LoadingData.vue'
     <button type="submit" class="form-button">Enviar</button>
     <div v-if="loading" class="loading">
       <p>Carregando...</p>
-      <p><LoadingData /></p>
+      <LoadingData />
     </div>
     <div v-else-if="error" class="error" v-html="error"></div>
     <div v-if="renderedMarkdown" class="markdown-content">
@@ -52,7 +52,11 @@ import LoadingData from './LoadingData.vue'
   width: 100%;
 }
 
-.loading,
+.loading {
+  text-align: center;
+  font-size: 18px;
+}
+
 .error {
   text-align: center;
   font-size: 18px;
