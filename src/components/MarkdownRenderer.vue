@@ -17,6 +17,47 @@
   </div>
 </template>
 
+<style scoped>
+.form-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  font-size: 16px;
+  font-family: var(--font-primary);
+}
+
+.form-button {
+  font-family: var(--font-primary);
+  font-size: 18px;
+  font-weight: 100;
+  letter-spacing: 1.5px;
+  padding: 10px 20px;
+  background-color: var(--background-secoundary-color);
+  color: white;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.loading,
+.error {
+  text-align: center;
+  font-size: 18px;
+  margin-top: 20px;
+}
+
+.markdown-content {
+  margin-top: 20px;
+  font-family: 'Georgia', serif;
+  line-height: 1.6;
+  code {
+    background-color: #f0f0f0;
+    padding: 2px 5px;
+  }
+}
+</style>
+
 <script lang="ts">
 import axios from 'axios'
 import MarkdownIt from 'markdown-it'
@@ -61,40 +102,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-.form-input {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  margin-bottom: 10px;
-}
-
-.form-button {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  width: 100%;
-}
-
-.loading,
-.error {
-  text-align: center;
-  font-size: 18px;
-  margin-top: 20px;
-}
-
-.markdown-content {
-  margin-top: 20px;
-  /* Adicione estilos para o conteúdo do markdown aqui */
-  font-family: 'Georgia', serif;
-  line-height: 1.6;
-  code {
-    background-color: #f0f0f0;
-    padding: 2px 5px;
-  }
-  /* Adicione mais estilos para outros elementos do markdown (cabeçalhos, listas, etc.) */
-}
-</style>
