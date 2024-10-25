@@ -66,7 +66,7 @@ export default {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+
   margin-bottom: 10px;
 }
 
@@ -75,7 +75,6 @@ export default {
   background-color: #4caf50;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
   width: 100%;
 }
