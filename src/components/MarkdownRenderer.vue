@@ -19,12 +19,17 @@
 
 <style scoped>
 .form-input {
+  outline: none;
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
   margin-bottom: 10px;
-  font-size: 16px;
+  font-size: 20px;
   font-family: var(--font-primary);
+}
+.form-input:focus {
+  outline: none;
+  border: 1px solid var(--background-secoundary-color);
 }
 
 .form-button {
