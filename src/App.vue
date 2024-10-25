@@ -10,19 +10,7 @@ import TopHeader from './components/TopHeader.vue'
   <RouterView />
 </template>
 
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
-
-* {
-  border-radius: var(--border-radius);
-  color: var(--text-primary-color);
-}
-body {
-  font-family: var(--font-primary);
-  margin: 0;
-  padding: 0;
-  background-color: var(--background-primary-color);
-}
+<style scoped>
 .container {
   display: flex;
   flex-direction: row;
