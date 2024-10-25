@@ -2,5 +2,7 @@
 :root {
   --border-radius: 5px;
   --background-primary-color: #f0f0f0;
+  --background-secoundary-color: #00940c;
   --text-primary-color: #2c3e50;
+  --font-primary: 'Bebas Neue', sans-serif;
 }
