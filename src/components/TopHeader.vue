@@ -16,7 +16,7 @@ const getBtnClass = (btnPath: string) =>
 </script>
 
 <template>
-  <h1>IdeaPlan<span class="green">AI</span></h1>
+  <h1>Idea<span class="green">P</span>lan<span class="green">AI</span></h1>
   <nav>
     <router-link
       v-for="route in routes"
@@ -36,7 +36,7 @@ const getBtnClass = (btnPath: string) =>
 
 <style scoped>
 .green {
-  color: green;
+  color: var(--background-secoundary-color);
 }
 .inactive-btn {
   color: rgb(169, 169, 169);
