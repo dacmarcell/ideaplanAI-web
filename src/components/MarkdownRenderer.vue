@@ -16,7 +16,7 @@ import LoadingData from './LoadingData.vue'
       <p><LoadingData /></p>
     </div>
     <div v-else-if="error" class="error" v-html="error"></div>
-    <div v-else-if="markdown" class="markdown-content">
+    <div v-if="renderedMarkdown" class="markdown-content">
       <div v-html="renderedMarkdown"></div>
     </div>
   </form>
@@ -85,6 +85,12 @@ export default {
       md: new MarkdownIt(),
     }
   },
+  mounted() {
+    const localMarkdown = localStorage.getItem('markdown')
+    if (localMarkdown) {
+      this.renderedMarkdown = this.md.render(localMarkdown)
+    }
+  },
   methods: {
     onSubmit() {
       this.loading = true
@@ -103,6 +109,7 @@ export default {
         .then(response => {
           this.markdown = response.data
           this.renderedMarkdown = this.md.render(this.markdown)
+          localStorage.setItem('markdown', this.markdown)
         })
         .catch(error => {
           this.error = error
