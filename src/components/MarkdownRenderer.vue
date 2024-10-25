@@ -9,7 +9,7 @@
       />
       <button type="submit" class="form-button">Enviar</button>
       <div v-if="loading" class="loading">Carregando...</div>
-      <div v-else-if="error" class="error">Erro ao carregar o markdown</div>
+      <div v-else-if="error" class="error" v-html="error"></div>
       <div v-else-if="markdown" class="markdown-content">
         <div v-html="renderedMarkdown"></div>
       </div>
@@ -38,14 +38,15 @@ export default {
       this.error = ''
       this.markdown = ''
 
-      if (!process.env.VUE_APP_API_URL) {
-        this.error = 'API URL is missing or invalid.'
+      const apiUrl = import.meta.env.VITE_API_URL
+      if (!apiUrl) {
+        this.error = 'URL da API ausente no env.'
         this.loading = false
         return
       }
 
       axios
-        .post(process.env.VUE_APP_API_URL, { text: this.text })
+        .post(apiUrl, { text: this.text })
         .then(response => {
           this.markdown = response.data
           this.renderedMarkdown = this.md.render(this.markdown)
@@ -66,7 +67,6 @@ export default {
   width: 100%;
   padding: 10px;
   border: 1px solid #ccc;
-
   margin-bottom: 10px;
 }
 
