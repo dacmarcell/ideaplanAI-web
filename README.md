@@ -1,24 +1,24 @@
-# ideaplan-ai
+### IdeaPlanAI - Web - Transforme suas ideias em projetos com IA
 
-This template should help get you started developing with Vue 3 in Vite.
+Um analisador de projetos que utiliza IA para calcular os requisitos funcionais, não funcionais, estimativa de tempo, tecnologias recomendadas e desafios em potencial a partir do projeto proposto.
 
-## Variáveis de ambiente:
+### Variáveis de ambiente:
 
 `VITE_API_URL` - URL da API em produção.
 
-## Recommended IDE Setup
+### Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
 
-## Type Support for `.vue` Imports in TS
+### Type Support for `.vue` Imports in TS
 
 TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
 
-## Customize configuration
+### Customize configuration
 
 See [Vite Configuration Reference](https://vite.dev/config/).
 
-## Project Setup
+### Project Setup
 
 ```sh
 npm install
