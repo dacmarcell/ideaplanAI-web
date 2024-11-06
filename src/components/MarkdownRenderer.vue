@@ -1,15 +1,22 @@
 <script setup lang="ts">
 import LoadingData from './LoadingData.vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
 </script>
 
 <template>
   <form @submit.prevent="onSubmit">
-    <input
-      type="text"
-      v-model="text"
-      placeholder="Descreva o projeto..."
-      class="form-input"
-    />
+    <div class="row">
+      <input
+        type="text"
+        v-model="text"
+        placeholder="Descreva o projeto..."
+        class="form-input"
+      />
+      <button @ckick="onMicrophoneClick" class="form-btn">
+        <FontAwesomeIcon :icon="faMicrophone" class="icon microphone-icon" />
+      </button>
+    </div>
     <button type="submit" class="form-button">Enviar</button>
     <div v-if="loading" class="loading">
       <p>Carregando...</p>
@@ -23,6 +30,12 @@ import LoadingData from './LoadingData.vue'
 </template>
 
 <style scoped>
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 .form-input {
   outline: none;
   width: 100%;
@@ -38,7 +51,15 @@ import LoadingData from './LoadingData.vue'
 .form-input:focus {
   border: 1px solid var(--background-secoundary-color);
 }
-
+.form-btn {
+  background-color: transparent;
+  border: none;
+}
+.microphone-icon {
+  cursor: pointer;
+  color: var(--background-secoundary-color);
+  font-size: 24px;
+}
 .form-button {
   font-family: var(--font-primary);
   font-size: 18px;
@@ -123,6 +144,9 @@ export default {
         .finally(() => {
           this.loading = false
         })
+    },
+    onMicrophoneClick() {
+      console.log('Microphone clicked')
     },
   },
 }
