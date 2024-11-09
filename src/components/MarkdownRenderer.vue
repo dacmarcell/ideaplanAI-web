@@ -1,7 +1,8 @@
 <script setup lang="ts">
-import LoadingData from './LoadingData.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
+
+import LoadingData from './LoadingData.vue'
 </script>
 
 <template>
@@ -10,11 +11,18 @@ import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
       <input
         type="text"
         v-model="text"
-        placeholder="Descreva o projeto..."
         class="form-input"
+        placeholder="Descreva o projeto..."
       />
-      <button @ckick="onMicrophoneClick" class="form-btn">
-        <FontAwesomeIcon :icon="faMicrophone" class="icon microphone-icon" />
+      <button type="button" @click="onSearchWithVoice" class="form-btn">
+        <FontAwesomeIcon
+          :icon="faMicrophone"
+          :class="
+            isSearchingUsingVoice
+              ? 'icon microphone-active'
+              : 'icon microphone-inactive'
+          "
+        />
       </button>
     </div>
     <button type="submit" class="form-button">Enviar</button>
@@ -55,9 +63,15 @@ import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
   background-color: transparent;
   border: none;
 }
-.microphone-icon {
+.microphone-inactive {
   cursor: pointer;
   color: var(--background-secoundary-color);
+  font-size: 24px;
+}
+.microphone-active {
+  cursor: pointer;
+  color: red;
+  background-color: red;
   font-size: 24px;
 }
 .form-button {
@@ -103,11 +117,13 @@ export default {
   data() {
     return {
       text: '',
-      loading: false,
       error: '',
       markdown: '',
       renderedMarkdown: '',
       md: new MarkdownIt(),
+      loading: false,
+      isSearchingUsingVoice: false,
+      SEARCH_WITH_VOICE_TIMEOUT: 3000,
     }
   },
   mounted() {
@@ -145,8 +161,10 @@ export default {
           this.loading = false
         })
     },
-    onMicrophoneClick() {
-      console.log('Microphone clicked')
+    onSearchWithVoice() {
+      setTimeout(() => {
+        this.isSearchingUsingVoice = false
+      }, this.SEARCH_WITH_VOICE_TIMEOUT)
     },
   },
 }
