@@ -115,7 +115,7 @@ export default {
       }
 
       axios
-        .post(apiUrl, { text: this.text })
+        .post(`${apiUrl}/`, { text: this.text })
         .then(res => {
           const { category, plan } = res.data
           this.markdown = plan
