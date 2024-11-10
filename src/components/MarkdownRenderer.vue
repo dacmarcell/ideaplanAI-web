@@ -1,8 +1,6 @@
 <script setup lang="ts">
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faMicrophone } from '@fortawesome/free-solid-svg-icons'
-
 import LoadingData from './LoadingData.vue'
+import VoiceSearch from './VoiceSearch.vue'
 </script>
 
 <template>
@@ -14,17 +12,8 @@ import LoadingData from './LoadingData.vue'
         class="form-input"
         placeholder="Descreva o projeto..."
       />
-      <button type="button" @click="onSearchWithVoice" class="form-btn">
-        <FontAwesomeIcon
-          :icon="faMicrophone"
-          :class="
-            isSearchingUsingVoice
-              ? 'icon microphone-active'
-              : 'icon microphone-inactive'
-          "
-        />
-      </button>
     </div>
+    <VoiceSearch />
     <button type="submit" class="form-button">Enviar</button>
     <div v-if="loading" class="loading">
       <p>Carregando...</p>
@@ -59,21 +48,6 @@ import LoadingData from './LoadingData.vue'
 .form-input:focus {
   border: 1px solid var(--background-secoundary-color);
 }
-.form-btn {
-  background-color: transparent;
-  border: none;
-}
-.microphone-inactive {
-  cursor: pointer;
-  color: var(--background-secoundary-color);
-  font-size: 24px;
-}
-.microphone-active {
-  cursor: pointer;
-  color: red;
-  background-color: red;
-  font-size: 24px;
-}
 .form-button {
   font-family: var(--font-primary);
   font-size: 18px;
@@ -86,18 +60,15 @@ import LoadingData from './LoadingData.vue'
   cursor: pointer;
   width: 100%;
 }
-
 .loading {
   text-align: center;
   font-size: 18px;
 }
-
 .error {
   text-align: center;
   font-size: 18px;
   margin-top: 20px;
 }
-
 .markdown-content {
   margin-top: 20px;
   font-family: 'Georgia', serif;
@@ -122,8 +93,6 @@ export default {
       renderedMarkdown: '',
       md: new MarkdownIt(),
       loading: false,
-      isSearchingUsingVoice: false,
-      SEARCH_WITH_VOICE_TIMEOUT: 3000,
     }
   },
   mounted() {
@@ -160,11 +129,6 @@ export default {
         .finally(() => {
           this.loading = false
         })
-    },
-    onSearchWithVoice() {
-      setTimeout(() => {
-        this.isSearchingUsingVoice = false
-      }, this.SEARCH_WITH_VOICE_TIMEOUT)
     },
   },
 }
