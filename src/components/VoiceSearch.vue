@@ -36,6 +36,7 @@
 import { ref } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faMicrophone, faStopCircle } from '@fortawesome/free-solid-svg-icons'
+import axios from 'axios'
 
 const isRecording = ref(false)
 const chunks = ref<Blob[]>([])
@@ -56,11 +57,13 @@ const startRecording = async () => {
       chunks.value.push(event.data)
     }
 
-    mediaRecorder.onstop = () => {
+    mediaRecorder.onstop = async () => {
       const blob = new Blob(chunks.value, { type: 'audio/ogg; codecs=opus' })
       const url = URL.createObjectURL(blob)
       audioClips.value.push({ name: new Date().getTime().toString(), url })
       chunks.value = []
+
+      await sendAudioToAPI(blob)
     }
 
     mediaRecorder.start()
@@ -75,6 +78,47 @@ const stopRecording = () => {
   if (mediaRecorder && mediaRecorder.state !== 'inactive') {
     mediaRecorder.stop()
     isRecording.value = false
+  }
+
+  console.log({ audioClips })
+}
+
+const blobToBase64 = (blob: Blob) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onloadend = () => resolve(reader.result as string)
+    reader.onerror = reject
+    reader.readAsDataURL(blob)
+  })
+}
+
+const sendAudioToAPI = async (audioBlob: Blob) => {
+  // Converter o Blob para base64 para enviar como JSON
+  const base64Audio = await blobToBase64(audioBlob)
+
+  try {
+    const apiUrl = import.meta.env.VITE_API_URL
+    if (!apiUrl) {
+      // this.error = 'URL da API ausente no env.'
+      // this.loading = false
+      return
+    }
+
+    const { status, statusText, data } = await axios.post(
+      `${apiUrl}/get-audio-in-text`,
+      { file: base64Audio },
+    )
+
+    if (status === 200) {
+      alert('Áudio enviado com sucesso')
+      console.log('Resposta da API:', data)
+    } else {
+      alert('Erro ao enviar áudio para a API')
+      console.error(statusText)
+    }
+  } catch (error) {
+    alert('Erro na requisição para a API')
+    console.error(error)
   }
 }
 
