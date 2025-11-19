@@ -110,10 +110,11 @@ export default {
       axios
         .post(`${apiUrl}/`, { text: this.text })
         .then(res => {
-          const { category, plan } = res.data
+          const { plan } = res.data
+
           this.markdown = plan
-          console.log({ category })
           this.renderedMarkdown = this.md.render(this.markdown)
+
           localStorage.setItem('markdown', this.markdown)
         })
         .catch(error => {
