@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import LoadingData from './LoadingData.vue'
-import VoiceSearch from './VoiceSearch.vue'
 </script>
 
 <template>
@@ -13,7 +12,6 @@ import VoiceSearch from './VoiceSearch.vue'
         placeholder="Descreva o projeto..."
       />
     </div>
-    <VoiceSearch />
     <button type="submit" class="form-button">Enviar</button>
     <div v-if="loading" class="loading">
       <p>Carregando...</p>
@@ -107,12 +105,7 @@ export default {
       this.error = ''
       this.markdown = ''
 
-      const apiUrl = import.meta.env.VITE_API_URL
-      if (!apiUrl) {
-        this.error = 'URL da API ausente no env.'
-        this.loading = false
-        return
-      }
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
 
       axios
         .post(`${apiUrl}/`, { text: this.text })
