@@ -1,8 +1,31 @@
 <script setup lang="ts">
 import MarkdownRenderer from '../components/MarkdownRenderer.vue'
 import { onMounted, ref } from 'vue'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faRobot, faBolt, faChartColumn } from '@fortawesome/free-solid-svg-icons'
 
 const cardsVisible = ref(false)
+
+const featureCards = [
+  {
+    icon: faRobot,
+    title: 'IA Avançada',
+    description: 'Tecnologia de ponta para análise inteligente de projetos',
+    delay: '0.1s'
+  },
+  {
+    icon: faBolt,
+    title: 'Análise Rápida',
+    description: 'Receba recomendações instantâneas sobre requisitos e tecnologias',
+    delay: '0.2s'
+  },
+  {
+    icon: faChartColumn,
+    title: 'Estimativas Precisas',
+    description: 'Planejamento detalhado com estimativas de tempo por etapa',
+    delay: '0.3s'
+  }
+]
 
 onMounted(() => {
   setTimeout(() => {
@@ -27,27 +50,18 @@ onMounted(() => {
       </div>
 
       <div class="features-grid" :class="{ visible: cardsVisible }">
-        <div class="feature-card" :style="{ '--delay': '0.1s' }">
-          <div class="card-icon">🤖</div>
-          <h3 class="card-title">IA Avançada</h3>
+        <div
+          v-for="feature in featureCards"
+          :key="feature.title"
+          class="feature-card"
+          :style="{ '--delay': feature.delay }"
+        >
+          <div class="card-icon">
+            <FontAwesomeIcon :icon="feature.icon" />
+          </div>
+          <h3 class="card-title">{{ feature.title }}</h3>
           <p class="card-description">
-            Tecnologia de ponta para análise inteligente de projetos
-          </p>
-        </div>
-
-        <div class="feature-card" :style="{ '--delay': '0.2s' }">
-          <div class="card-icon">⚡</div>
-          <h3 class="card-title">Análise Rápida</h3>
-          <p class="card-description">
-            Receba recomendações instantâneas sobre requisitos e tecnologias
-          </p>
-        </div>
-
-        <div class="feature-card" :style="{ '--delay': '0.3s' }">
-          <div class="card-icon">📊</div>
-          <h3 class="card-title">Estimativas Precisas</h3>
-          <p class="card-description">
-            Planejamento detalhado com estimativas de tempo por etapa
+            {{ feature.description }}
           </p>
         </div>
       </div>
@@ -199,6 +213,12 @@ onMounted(() => {
   margin-bottom: 1.5rem;
   filter: drop-shadow(0 0 10px rgba(0, 255, 136, 0.3));
   animation: floatIcon 3s ease-in-out infinite;
+}
+
+.card-icon :deep(svg) {
+  width: 3rem;
+  height: 3rem;
+  color: var(--neon-green);
 }
 
 @keyframes floatIcon {
