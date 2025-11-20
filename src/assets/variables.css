@@ -1,8 +1,25 @@
 /* variables.css */
 :root {
-  --border-radius: 5px;
-  --background-primary-color: #f0f0f0;
-  --background-secoundary-color: #00940c;
-  --text-primary-color: #2c3e50;
-  --font-primary: 'Bebas Neue', sans-serif;
+  --border-radius: 16px;
+  --border-radius-lg: 24px;
+  --background-primary-color: #0a0e27;
+  --background-secondary-color: #00ff88;
+  --background-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --background-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --background-gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  --neon-green: #00ff88;
+  --neon-blue: #00d4ff;
+  --neon-purple: #b794f6;
+  --neon-pink: #ff6b9d;
+  --text-primary-color: #ffffff;
+  --text-secondary-color: #a0aec0;
+  --text-muted: #718096;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --shadow-neon: 0 0 20px rgba(0, 255, 136, 0.3);
+  --shadow-neon-blue: 0 0 20px rgba(0, 212, 255, 0.3);
+  --shadow-glow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+  --font-display: 'Bebas Neue', sans-serif;
 }
