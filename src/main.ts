@@ -12,7 +12,9 @@ app.use(router)
 // Check API health as soon as the app starts (non-blocking)
 async function checkApiHealth() {
   try {
-    const { ok, json, status, statusText } = await fetch('/health')
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+
+    const { ok, json, status, statusText } = await fetch(apiUrl + '/health')
 
     if (!ok) {
       console.warn(`API health check failed: ${status} ${statusText}`)
