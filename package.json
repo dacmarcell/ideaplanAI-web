@@ -18,7 +18,7 @@
     "@aws-sdk/client-s3": "^3.997.0",
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/vue-fontawesome": "^3.0.8",
-    "axios": "^1.13.6",
+    "axios": "^1.15.0",
     "markdown-it": "^14.1.1",
     "vue": "^3.5.12",
     "vue-router": "^4.4.5"
